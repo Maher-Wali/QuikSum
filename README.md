@@ -29,14 +29,12 @@ You can adjust the summary length in the settings:
 Open the SummaSmart settings menu.
 Choose a preferred length or compression ratio for your summaries.
 Save your preferences for future use.
-Technical Details
+# Technical Details
 This extension leverages NLP techniques for extracting key sentences and condensing large chunks of text while retaining essential information. It’s built with the following technologies:
 
 JavaScript for main extension logic.
 Browser API for file handling and user interactions.
 Python (optional) for more complex NLP models if backend support is enabled.
-Contributing
-Contributions are welcome! Please submit a pull request with a detailed description of the changes or open an issue if you have any suggestions or find bugs.
 
 # License
 This project is licensed under the MIT License.
