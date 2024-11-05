@@ -13,20 +13,20 @@ For Chrome: chrome://extensions
 For Firefox: about:addons
 Enable Developer Mode (in Chrome).
 Select Load Unpacked (in Chrome) or Load Temporary Add-on (in Firefox).
-Choose the folder containing the extension files to install SummaSmart.
+Choose the folder containing the extension files to install QuikSum.
 # Usage
 Summarize Selected Text
 Highlight any text on a webpage.
-Right-click and select "Summarize with SummaSmart" from the context menu.
+Right-click and select "Summarize with QuikSum" from the context menu.
 A popup will display the summarized version.
 # Summarize PDF Files
-Click on the SummaSmart icon in the browser toolbar.
+Click on the QuikSum icon in the browser toolbar.
 Choose "Upload PDF" and select the file you want summarized.
 After processing, the summary will appear in a new tab or popup.
 Customize Summary Length
 You can adjust the summary length in the settings:
 
-Open the SummaSmart settings menu.
+Open the QuikSum settings menu.
 Choose a preferred length or compression ratio for your summaries.
 Save your preferences for future use.
 # Technical Details
