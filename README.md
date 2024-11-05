@@ -1,7 +1,7 @@
 # QuikSum
 QuikSum is a browser extension designed to quickly and accurately summarize raw text selections or PDF files. Ideal for researchers, students, or anyone looking to save time by reading condensed versions of lengthy documents.
 
-#Features
+# Features
 Quick Summarization of Text Selections: Instantly summarize any text you highlight.
 PDF Support: Upload PDF files for efficient, summarized overviews.
 Customizable Summary Length: Choose the level of detail you want for your summaries.
