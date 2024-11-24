@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extension Popup</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Notion-inspired dark mode styles */
+    body {
+      width: 250px;
+      padding: 15px;
+      font-family: 'Roboto', sans-serif;
+      background-color: #191919; /* Soft black background */
+      color: #E4E4E4; /* Light gray text */
+    }
+
+    input[type="text"] {
+      background-color: #2B2B2B; /* Dark gray input background */
+      border: 1px solid #444444; /* Subtle gray border */
+      color: #E4E4E4; /* Light text for input */
+    }
+
+    input[type="text"]::placeholder {
+      color: #666666; /* Muted gray for placeholders */
+    }
+
+    .btn {
+      border: 1px solid transparent;
+    }
+
+    .btn-play {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 0;
+      background-color: #444444; /* Dark button background */
+      color: #E4E4E4; /* Light icon color */
+      border: 1px solid #444444;
+    }
+
+    .btn-play:hover {
+      background-color: #5A5A5A; /* Slightly lighter gray on hover */
+    }
+
+    .btn-copy {
+      margin-top: 15px;
+      background-color: #444444; /* Dark button background */
+      color: #E4E4E4; /* Light text */
+      border: 1px solid #444444; /* Subtle border */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-copy:hover {
+      background-color: #5A5A5A; /* Slightly lighter gray on hover */
+    }
+
+    .icon-copy {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Add subtle border-radius for Notion-like smoothness */
+    input[type="text"], .btn {
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Input and Play Button -->
+    <div class="input-group mb-3">
+      <input type="text" id="text-input" class="form-control" placeholder="Enter text here..." aria-label="Text input">
+      <button class="btn btn-play" id="play-btn">
+        <span class="icon-play">&#9658;</span> <!-- Play icon -->
+      </button>
+    </div>
+
+    <!-- Copy Summary Button with PNG Icon -->
+    <button id="copy-btn" class="btn btn-copy w-100">
+      <img src="copy-icon-dark-mode.png" alt="Copy" class="icon-copy"> Copy Summary
+    </button>
+  </div>
+
+  <!-- Bootstrap JS (Optional for interactive components, but not required here) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+#ignore the .idea folder
+.idea/
+
+#ignore the environment folder 
+sumenv/

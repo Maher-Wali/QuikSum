@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "QuikSum",
+    "version": "0.1.0",
+    "description": "Browser extension designed to quickly and accurately summarize raw text selections or PDF files",
+    "permissions": ["storage"],
+    "action": {
+      "default_popup": "popup.html"
+      //"default_icon": "icon.png"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+}
+  
