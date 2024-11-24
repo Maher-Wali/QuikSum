@@ -1,36 +1,24 @@
 import sys
 import json
-from transformers import BartForConditionalGeneration, BartTokenizer
+import google.generativeai as genai
+from IPython.display import HTML, Markdown, display
+
+genai.configure(api_key="AIzaSyBeqqNYOeU94hu6WaypKgJeN4T2DNI11O4")
+
 
 # Read input data from stdin
 input_data = sys.stdin.read()
 
 try:
     # Parse the input JSON
-    user_input = json.loads(input_data).get("input", "")
+    #user_input = json.loads(input_data).get("input", "")
 
-    # Load the tokenizer and fine-tuned summarization model
-    tokenizer = BartTokenizer.from_pretrained("facebook/bart-large-cnn")
-    model = BartForConditionalGeneration.from_pretrained("facebook/bart-large-cnn")
-
-    # Tokenize the input text
-    inputs = tokenizer.encode(user_input, return_tensors="pt", max_length=1024, truncation=True)
-
-    # Generate the summary
-    summary_ids = model.generate(
-        inputs, 
-        max_length=50, 
-        min_length=10, 
-        length_penalty=4.0, 
-        num_beams=6, 
-        early_stopping=True
-    )
-
-    # Decode the summary
-    summary = str(tokenizer.decode(summary_ids[0], skip_special_tokens=True))
+    flash = genai.GenerativeModel('gemini-1.5-flash')
+    prompt = "summarize : " + input_data
+    summary = flash.generate_content(prompt)
 
     # Output the summary as a JSON object
-    print(json.dumps({"result": summary}))
+    print(json.dumps({"result": summary.text}))
 
 except json.JSONDecodeError as e:
     print(f"Error decoding JSON: {e}", file=sys.stderr)

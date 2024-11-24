@@ -7,14 +7,16 @@ document.getElementById("play-btn").addEventListener("click", () => {
   fetch("http://localhost:3000/run-python", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+        "Content-Type": "application/json"
     },
-    body: JSON.stringify({ input: userInput }),
+    body: JSON.stringify({ input: userInput }) // Send input as JSON
   })
-    .then((response) => response.json())
-    .then((data) => console.log("Server response:", data))
-    .catch((error) => console.error("Fetch error:", error));
-  
+  .then(response => response.json())
+  .then(data => {
+    summaryText = data.result;
+    alert(`Python Output: ${data.result}`);
+  })
+  .catch(error => console.error("Error:", error));
 });
 
 // Event listener for the "Copy Summary" button
