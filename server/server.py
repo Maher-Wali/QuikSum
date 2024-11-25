@@ -9,13 +9,13 @@ def run_python():
     # Get the input from the client
     data = request.get_json()
     user_input = data.get("input", "")
-    print(f"Received input: {user_input}")
+    summary_length = data.get("length")
 
     try:
         # Use subprocess to call the external Python script
         result = subprocess.run(
             ["C:\QuikSum\sumenv\Scripts\python.exe", "inference.py"],            # Command to run the script
-            input=json.dumps({"input" : user_input}),                  # Pass the user input
+            input=json.dumps({"input" : user_input , "length" : summary_length}),
             text=True,                         # Ensure input/output as text
             capture_output=True                # Capture stdout and stderr
         )

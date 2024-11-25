@@ -2,19 +2,22 @@ import sys
 import json
 import google.generativeai as genai
 from IPython.display import HTML, Markdown, display
+import math
 
 genai.configure(api_key="AIzaSyBeqqNYOeU94hu6WaypKgJeN4T2DNI11O4")
 
 
 # Read input data from stdin
 input_data = sys.stdin.read()
+data = json.loads(input_data)
 
 try:
-    # Parse the input JSON
-    #user_input = json.loads(input_data).get("input", "")
-
+    user_input = data.get("input")
+    summary_length = data.get("length")
+    length = len(user_input.split(" "))
+    number_of_words = math.floor(float(summary_length)/100 * length)
     flash = genai.GenerativeModel('gemini-1.5-flash')
-    prompt = "summarize : " + input_data
+    prompt = "summarize in " + str(number_of_words) +  " words : " + user_input
     summary = flash.generate_content(prompt)
 
     # Output the summary as a JSON object

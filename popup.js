@@ -1,15 +1,27 @@
 let summaryText = ""; // Variable to store the Python output
+// Get slider and label elements
+const lengthSlider = document.getElementById("length-slider");
+const lengthValueLabel = document.getElementById("length-value");
+
+// Update label when slider value changes
+lengthSlider.addEventListener("input", () => {
+  lengthValueLabel.textContent = lengthSlider.value;
+});
 
 // Event listener for the "Play" button
 document.getElementById("play-btn").addEventListener("click", () => {
   const userInput = document.getElementById("text-input").value;
+  const summaryLength = lengthSlider.value;
 
   fetch("http://localhost:3000/run-python", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
     },
-    body: JSON.stringify({ input: userInput }) // Send input as JSON
+    body: JSON.stringify({
+      input: userInput,
+      length: summaryLength
+    }) // Send input as JSON
   })
   .then(response => response.json())
   .then(data => {
@@ -17,23 +29,6 @@ document.getElementById("play-btn").addEventListener("click", () => {
     alert(`Python Output: ${data.result}`);
   })
   .catch(error => console.error("Error:", error));
-});
-
-// Event listener for the "Copy Summary" button
-document.getElementById("copy-btn").addEventListener("click", () => {
-    console.log("Copying!");
-    if (summaryText) {
-    navigator.clipboard.writeText(summaryText).then(
-      () => {
-        alert("Summary copied to clipboard!");
-      },
-      (err) => {
-        console.error("Failed to copy: ", err);
-      }
-    );
-  } else {
-    alert("No summary available to copy!");
-  }
 });
 
 // Get the "Selected Text" button element
@@ -50,12 +45,16 @@ chrome.storage.local.get("selectedText", (data) => {
 
     // Handle button click
     selectedTextButton.addEventListener("click", () => {
+      const summaryLength = lengthSlider.value;
       fetch("http://localhost:3000/run-python", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ input: selectedText }) // Send input as JSON
+        body: JSON.stringify({
+          input: selectedText,
+          length: summaryLength
+        }) // Send input as JSON
       })
       .then(response => response.json())
   .then(data => {
@@ -78,4 +77,20 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
     const newValue = changes.selectedText.newValue || "";
     selectedTextButton.disabled = newValue.length === 0;
   }
+});
+
+// Event listener for the "Copy Summary" button
+document.getElementById("copy-btn").addEventListener("click", () => {
+  if (summaryText) {
+  navigator.clipboard.writeText(summaryText).then(
+    () => {
+      alert("Summary copied to clipboard!");
+    },
+    (err) => {
+      console.error("Failed to copy: ", err);
+    }
+  );
+} else {
+  alert("No summary available to copy!");
+}
 });
