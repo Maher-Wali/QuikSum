@@ -1,10 +1,15 @@
 import sys
 import json
 import google.generativeai as genai
-from IPython.display import HTML, Markdown, display
+#from IPython.display import HTML, Markdown, display
 import math
+from dotenv import load_dotenv
+import os
 
-genai.configure(api_key="AIzaSyBeqqNYOeU94hu6WaypKgJeN4T2DNI11O4")
+load_dotenv() 
+API_KEY = os.getenv("API_KEY")
+
+genai.configure(api_key=API_KEY)
 
 
 # Read input data from stdin

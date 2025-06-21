@@ -3,3 +3,7 @@
 
 #ignore the environment folder 
 sumenv/
+
+node_modules/
+
+.env

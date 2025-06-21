@@ -1,7 +1,12 @@
 import google.generativeai as genai
-from IPython.display import HTML, Markdown, display
+#from IPython.display import HTML, Markdown, display
+from dotenv import load_dotenv
+import os
 
-genai.configure(api_key="AIzaSyBeqqNYOeU94hu6WaypKgJeN4T2DNI11O4")
+load_dotenv() 
+API_KEY = os.getenv("API_KEY")
+
+genai.configure(api_key=API_KEY)
 
 text ="The BART model is a powerful tool for text summarization. It uses a Transformer-based architecture and can handle various natural language processing tasks. BART is particularly effective for summarizing long passages of text, generating concise summaries while preserving essential information."
 
